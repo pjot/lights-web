@@ -1,6 +1,6 @@
 <?php
 
-class Tellstick
+class TellStick
 {
     const ORANGE = 1;
     const GREEN = 2;
@@ -15,14 +15,8 @@ class Tellstick
 
     protected function sendCommand($cmd)
     {
-        $command = sprintf('tdtool %s');
+        $command = sprintf('tdtool %s', $cmd);
         shell_exec($command);
-    }
-
-    public function turnOn()
-    {
-        $command = sprintf('--on %s', $this->light);
-        $this->sendCommand($command);
     }
 
     public function turnOn()
