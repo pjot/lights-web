@@ -17,21 +17,27 @@
             <ul data-role="listview">
                 <li data-role="list-divider">Orange</li>
                 <li data-role="fieldcontain">
-                    <select id="orange" data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="2">
-                        <option value="turnOff">Off</option>
-                        <option value="turnOn">On</option>
+                    <select id="orange" data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="1">
+                        <option value="turnOff"{if $orange == 'OFF'} selected="selected"{/if}>Off</option>
+                        <option value="turnOn"{if $orange == 'ON'} selected="selected"{/if}>On</option>
                     </select>
                 </li>
                 <li data-role="list-divider">Green</li>
                 <li data-role="fieldcontain">
-                    <select id="green" data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="1">
-                        <option value="turnOff">Off</option>
-                        <option value="turnOn">On</option>
+                    <select id="green" data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="2">
+                        <option value="turnOff"{if $green == 'OFF'} selected="selected"{/if}>Off</option>
+                        <option value="turnOn"{if $green == 'ON'} selected="selected"{/if}>On</option>
                     </select>
                 </li>
                 <li data-role="list-divider">Ceiling</li>
                 <li data-role="fieldcontain">
-                    <input type="range" id="ceiling" value="60" min="0" max="100" data-highlight="true" class="dimmer" rel="3" />
+                    <select data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="3">
+                        <option value="turnOff"{if $ceiling == 'OFF'} selected="selected"{/if}>Off</option>
+                        <option value="turnOn"{if $ceiling != 'OFF'} selected="selected"{/if}>On</option>
+                    </select>
+                </li>
+                <li data-role="fieldcontain"{if $ceiling == 'OFF'} style="display: none;"{/if} id="ceiling_slider">
+                    <input type="range" id="ceiling" value="{$ceiling}" min="0" max="100" data-highlight="true" class="dimmer" rel="3" />
                 </li>
             </ul>
         </div>

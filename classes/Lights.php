@@ -24,7 +24,22 @@ class Lights
     public function main()
     {
 		$t = new Template();
-		$t->assign('title', 'eipen schnaur');
+		$lights = TellStick::getStatus();
+		foreach ($lights as $light)
+		{
+			switch ($light->id)
+			{
+				case '1':
+					$t->assign('orange', $light->status);
+					break;
+				case '2':
+					$t->assign('green', $light->status);
+					break;
+				case '3';
+					$t->assign('ceiling', ceil(100 * $light->status / 255));
+					break;
+			}
+		}
 		$t->display('main.html');
     }
 }
