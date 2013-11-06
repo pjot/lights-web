@@ -1,14 +1,7 @@
 $(document).ready(function () {
-    $('#green').change(function () {
-        var url = '?method=ajax&light=1&action=';
-        if ($(this).val() == 'no')
-        {
-            url += 'turnOff';
-        }
-        else
-        {
-            url += 'turnOn';
-        }
+    $('.toggler').change(function () {
+        var light = $(this),
+            url = '?method=ajax&light=' + light.attr('rel') + '&action=' + light.val();
         $.get(url);
     });
 });

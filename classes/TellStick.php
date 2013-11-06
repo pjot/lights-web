@@ -30,4 +30,11 @@ class TellStick
         $command = sprintf('--off %s', $this->light);
         $this->sendCommand($command);
     }
+
+    public function dim($level)
+    {
+        $this->turnOn();
+        $command = sprintf('--dimlevel %s --dim %s', $level, $this->light);
+        $this->sendCommand($command);
+    }
 }
