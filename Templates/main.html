@@ -1,5 +1,39 @@
-<html>
-	<body>
-		<h1>{$title}</h1>
-	</body>
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>My Page</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+        <script src="static/lights.js"></script>
+        <link rel="stylesheet" href="static/lights.css" />
+    </head> 
+    <body> 
+        <div data-role="page">
+            <div data-role="header">
+                <h1>Apartment Lights</h1>
+            </div>
+            <ul data-role="listview">
+                <li data-role="list-divider">Orange</li>
+                <li data-role="fieldcontain">
+                    <select id="orange" data-role="slider" data-theme="c" data-track-theme="a">
+                        <option value="no">Off</option>
+                        <option value="yes">On</option>
+                    </select>
+                </li>
+                <li data-role="list-divider">Green</li>
+                <li data-role="fieldcontain">
+                    <select id="green" data-role="slider" data-theme="c" data-track-theme="a">
+                        <option value="no">Off</option>
+                        <option value="yes">On</option>
+                    </select>
+                </li>
+                <li data-role="list-divider">Ceiling</li>
+                <li data-role="fieldcontain">
+                    <input type="range" id="ceiling" value="60" min="0" max="100" data-highlight="true" />
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
