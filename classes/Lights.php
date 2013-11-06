@@ -18,7 +18,7 @@ class Lights
         $light = isset($_GET['light']) ? $_GET['light'] : 'main';
         $action = $_GET['action'];
         $tellstick = new TellStick($light);
-        $tellstick->$action();
+        $tellstick->$action($_GET['arguments']);
     }
 
     public function main()
