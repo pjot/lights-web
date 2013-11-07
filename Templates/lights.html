@@ -1,0 +1,16 @@
+<ul data-role="listview">
+    {foreach $lights as $light}
+        <li data-role="list-divider">{$light->name}</li>
+        <li data-role="fieldcontain">
+            <select data-role="slider" data-theme="c" data-track-theme="a" class="toggler" rel="{$light->id}">
+                <option value="turnOff"{if $light->isOff()} selected="selected"{/if}>Off</option>
+                <option value="turnOn"{if $light->isOn()} selected="selected"{/if}>On</option>
+            </select>
+        </li>
+        {if $light->isDimmer()}
+            <li data-role="fieldcontain"{if $light->isOff()} style="display: none;"{/if}>
+                <input type="range" value="{$light->level}" min="0" max="100" data-highlight="true" class="dimmer" rel="{$light->id}" />
+            </li>
+        {/if}
+    {/foreach}
+</ul>

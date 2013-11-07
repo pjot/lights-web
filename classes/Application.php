@@ -1,6 +1,6 @@
 <?php
 
-class Lights
+class Application
 {
 	public function run()
     {
@@ -12,6 +12,12 @@ class Lights
         $this->$method();
 	}
 
+    public function lights()
+    {
+        $t = new Template;
+		$t->assign('lights', TellStick::getStatus());
+		$t->display('lights.html');
+    }
 
     public function ajax()
     {
@@ -23,23 +29,7 @@ class Lights
 
     public function main()
     {
-		$t = new Template();
-		$lights = TellStick::getStatus();
-		foreach ($lights as $light)
-		{
-			switch ($light->id)
-			{
-				case '1':
-					$t->assign('orange', $light->status);
-					break;
-				case '2':
-					$t->assign('green', $light->status);
-					break;
-				case '3';
-					$t->assign('ceiling', ceil(100 * $light->status / 255));
-					break;
-			}
-		}
+		$t = new Template;
 		$t->display('main.html');
     }
 }
