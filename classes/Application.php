@@ -19,6 +19,18 @@ class Application
 		$t->display('lights.html');
     }
 
+    public function set_preset()
+    {
+        TellStick::makePreset($_GET['preset']);
+    }
+
+    public function presets()
+    {
+        $t = new Template;
+        $t->assign('presets', TellStick::getPresets());
+        $t->display('presets.html');
+    }
+
     public function ajax()
     {
         $light = isset($_GET['light']) ? $_GET['light'] : 'main';

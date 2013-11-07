@@ -7,12 +7,25 @@
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
         <script src="static/lights.js"></script>
-        <link rel="stylesheet" href="static/lights.css" />
     </head> 
     <body> 
         <div data-role="page">
             <div data-role="header">
                 <h1>Apartment Lights</h1>
+            </div>
+            <div data-role="navbar">
+                <ul>
+                    <li>
+                        <a class="navbar-link" href="?method=lights" class="ui-btn-active">
+                            Lights
+                        </a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="?method=presets">
+                            Presets
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div id="content"></div>
         </div>

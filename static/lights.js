@@ -1,15 +1,15 @@
 $(document).ready(function () {
-    $.mobile.loading('show');
-    Lights.fetch();
+    Lights.navigateTo('?method=lights');
+    $('.navbar-link:first').addClass('ui-btn-active');
 });
 
 Lights = {
-    fetch : function () {
-        $.get('?method=lights', function (data) {
+    navigateTo : function (url) {
+        $('#content').html('');
+        $.mobile.loading('show');
+        $.get(url, function (data) {
             $('#content').html(data);
             $('#content').trigger('create');
-            /*$('#content ul').listview();
-            $('.toggler, .dimmer').slider();*/
             $.mobile.loading('hide');
             Lights.bindEvents();
         });
@@ -31,6 +31,19 @@ Lights = {
             var light = $(this),
                 url = '?method=ajax&light=' + light.attr('rel') + '&action=dim&arguments=' + light.val();
             $.get(url);
+        });
+        $('.navbar-link').on('click', function () {
+            Lights.navigateTo($(this).attr('href'));
+            $('.navbar-link').removeClass('ui-btn-active');
+            $(this).addClass('ui-btn-active');
+            return false;
+        });
+        $('.preset-link').on('click', function () {
+            $.get('?method=set_preset&preset=' + $(this).attr('rel'), function () {
+                $('.navbar-link').removeClass('ui-btn-active');
+                $('.navbar-link:first').addClass('ui-btn-active');
+                Lights.navigateTo('?method=lights');
+            });
         });
     },
 };
