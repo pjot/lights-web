@@ -39,6 +39,8 @@ Lights = {
             return false;
         });
         $('.preset-link').on('click', function () {
+            $('#content').html('');
+            $.mobile.loading('show');
             $.get('?method=set_preset&preset=' + $(this).attr('rel'), function () {
                 $('.navbar-link').removeClass('ui-btn-active');
                 $('.navbar-link:first').addClass('ui-btn-active');
